@@ -1,14 +1,18 @@
 package vehicles;
 
-public class Car extends Transport implements Competing {
+import license.LicenseB;
+
+public class Car<T extends LicenseB> extends Transport implements Competing {
 
     private int number;
-
     public Car(String brand, String model, float engineVolume, int number) {
         super(brand, model, engineVolume);
+
         if (number <= 0) this.number = 1;
         else this.number = number;
     }
+
+
 
     @Override
     public void startMoving() {

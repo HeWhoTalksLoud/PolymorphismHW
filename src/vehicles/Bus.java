@@ -1,6 +1,9 @@
 package vehicles;
 
-public class Bus extends Transport implements Competing {
+import license.LicenseB;
+import license.LicenseD;
+
+public class Bus<T extends LicenseD> extends Transport implements Competing {
 
     private String number;
     public Bus(String brand, String model, float engineVolume, String number) {
