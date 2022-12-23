@@ -33,5 +33,9 @@ public class Main {
 
         truck3.startMoving();
         truck3.stopMoving();
+
+        bus1.pitStop();
+        car3.bestLap();
+        truck2.maxSpeed();
     }
 } //

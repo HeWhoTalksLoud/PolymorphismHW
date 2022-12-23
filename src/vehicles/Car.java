@@ -1,6 +1,6 @@
 package vehicles;
 
-public class Car extends Transport {
+public class Car extends Transport implements Competing {
 
     private int number;
 
@@ -33,5 +33,20 @@ public class Car extends Transport {
     public void setNumber(int number) {
         if (number <= 0) this.number = 1;
         else this.number = number;
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("Машина - пит-стоп");
+    }
+
+    @Override
+    public void bestLap() {
+        System.out.println("Машина - лучшее время круга");
+    }
+
+    @Override
+    public void maxSpeed() {
+        System.out.println("Машина - макс. скорость");
     }
 } //

@@ -1,6 +1,6 @@
 package vehicles;
 
-public class Bus extends Transport {
+public class Bus extends Transport implements Competing {
 
     private String number;
     public Bus(String brand, String model, float engineVolume, String number) {
@@ -33,5 +33,20 @@ public class Bus extends Transport {
     public void setNumber(String number) {
         if (number == null || number.equals("")) this.number = "default";
         else this.number = number;
+    }
+
+    @Override
+    public void pitStop() {
+        System.out.println("Автобус - пит-стоп");
+    }
+
+    @Override
+    public void bestLap() {
+        System.out.println("Автобус - лучшее время круга");
+    }
+
+    @Override
+    public void maxSpeed() {
+        System.out.println("Автобус - макс. скорость");
     }
 } //
