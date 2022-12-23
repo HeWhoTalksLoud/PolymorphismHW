@@ -34,4 +34,4 @@ public class Truck extends Transport {
         if (number <= 0) this.number = 1;
         else this.number = number;
     }
-}
+} //

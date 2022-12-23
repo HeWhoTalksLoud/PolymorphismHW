@@ -34,4 +34,4 @@ public class Bus extends Transport {
         if (number == null || number.equals("")) this.number = "default";
         else this.number = number;
     }
-}
+} //

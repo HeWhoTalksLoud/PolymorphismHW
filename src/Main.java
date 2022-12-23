@@ -34,4 +34,4 @@ public class Main {
         truck3.startMoving();
         truck3.stopMoving();
     }
-}
+} //
