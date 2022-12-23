@@ -1,8 +1,13 @@
 package vehicles;
 
-public class Truck extends Car {
-    public Truck(String brand, String model, float engineVolume) {
+public class Truck extends Transport {
+
+    private int number;
+    public Truck(String brand, String model, float engineVolume, int number) {
         super(brand, model, engineVolume);
+
+        if (number <= 0) this.number = 1;
+        else this.number = number;
     }
 
     @Override
@@ -13,5 +18,20 @@ public class Truck extends Car {
     @Override
     public void stopMoving() {
         System.out.println("Грузовик прекращает движение");
+    }
+
+    @Override
+    public String toString() {
+        return "грузовик " + getBrand() + " " + getModel() + ", " +
+                "номер: " + number + ", объем двигателя: " + getEngineVolume();
+    }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public void setNumber(int number) {
+        if (number <= 0) this.number = 1;
+        else this.number = number;
     }
 }
