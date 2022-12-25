@@ -1,16 +1,28 @@
 package vehicles;
 
-import license.LicenseB;
-import license.LicenseD;
+import driver.DriverD;
 
-public class Bus<T extends LicenseD> extends Transport implements Competing {
+public class Bus<T extends DriverD> extends Transport {
 
     private String number;
+    private T driver;
     public Bus(String brand, String model, float engineVolume, String number) {
         super(brand, model, engineVolume);
 
         if (number == null || number.equals("")) this.number = "default";
         else this.number = number;
+
+        driver = null;
+    }
+
+    @Override
+    public T getDriver() {
+        return driver;
+    }
+
+
+    public void setDriver(T driver) {
+        this.driver = driver;
     }
 
     @Override
@@ -36,6 +48,18 @@ public class Bus<T extends LicenseD> extends Transport implements Competing {
     public void setNumber(String number) {
         if (number == null || number.equals("")) this.number = "default";
         else this.number = number;
+    }
+
+    @Override
+    public void showRaceInfo() {
+        if (driver == null) {
+            System.out.println(getBrand() + " " + getModel() + " " +
+                    number + " - водитель не назначен");
+        }
+        else {
+            System.out.println("Водитель " + driver.getName() + " управляет автобусом: \n" +
+                    this + " и будет участвовать в заезде");
+        }
     }
 
     @Override

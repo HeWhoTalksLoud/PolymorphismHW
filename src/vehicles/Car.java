@@ -1,15 +1,20 @@
 package vehicles;
 
-import license.LicenseB;
+import driver.Driver;
+import driver.DriverB;
 
-public class Car<T extends LicenseB> extends Transport implements Competing {
+public class Car<T extends DriverB> extends Transport {
 
     private int number;
+    private T driver;
+
     public Car(String brand, String model, float engineVolume, int number) {
         super(brand, model, engineVolume);
 
         if (number <= 0) this.number = 1;
         else this.number = number;
+
+        this.driver = null;
     }
 
 
@@ -38,6 +43,29 @@ public class Car<T extends LicenseB> extends Transport implements Competing {
         if (number <= 0) this.number = 1;
         else this.number = number;
     }
+
+    @Override
+    public T getDriver() {
+        return this.driver;
+    }
+
+
+    @Override
+    public void showRaceInfo() {
+        if (driver == null) {
+            System.out.println(getBrand() + " " + getModel() + " " +
+                    number + " - водитель не назначен");
+        }
+        else {
+            System.out.println("Водитель " + driver.getName() + " управляет автомобилем: \n" +
+                    this + " и будет участвовать в заезде");
+        }
+    }
+
+    public void setDriver(T driver) {
+        this.driver = driver;
+    }
+
 
     @Override
     public void pitStop() {

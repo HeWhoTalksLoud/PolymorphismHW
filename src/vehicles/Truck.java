@@ -1,16 +1,26 @@
 package vehicles;
 
-import license.LicenseB;
-import license.LicenseC;
+import driver.DriverC;
 
-public class Truck<T extends LicenseC> extends Transport implements Competing {
+public class Truck<T extends DriverC> extends Transport  {
 
     private int number;
+    private T driver;
     public Truck(String brand, String model, float engineVolume, int number) {
         super(brand, model, engineVolume);
 
         if (number <= 0) this.number = 1;
         else this.number = number;
+
+        this.driver = null;
+    }
+
+    public T getDriver() {
+        return driver;
+    }
+
+    public void setDriver(T driver) {
+        this.driver = driver;
     }
 
     @Override
@@ -36,6 +46,18 @@ public class Truck<T extends LicenseC> extends Transport implements Competing {
     public void setNumber(int number) {
         if (number <= 0) this.number = 1;
         else this.number = number;
+    }
+
+    @Override
+    public void showRaceInfo() {
+        if (driver == null) {
+            System.out.println(getBrand() + " " + getModel() + " " +
+                    number + " - водитель не назначен");
+        }
+        else {
+            System.out.println("Водитель " + driver.getName() + " управляет грузовиком: \n" +
+                    this + " и будет участвовать в заезде");
+        }
     }
 
     @Override
