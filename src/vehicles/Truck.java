@@ -74,4 +74,4 @@ public class Truck<T extends DriverC> extends Transport  {
     public void maxSpeed() {
         System.out.println("Грузовик - макс. скорость");
     }
-} //
+} ////
