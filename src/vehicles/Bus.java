@@ -1,11 +1,12 @@
 package vehicles;
 
+import driver.DriverB;
 import driver.DriverD;
 
-public class Bus<T extends DriverD> extends Transport {
+public class Bus extends Transport<DriverD> {
 
     private String number;
-    private T driver;
+    //private DriverD driver;
     public Bus(String brand, String model, float engineVolume, String number) {
         super(brand, model, engineVolume);
 
@@ -15,15 +16,7 @@ public class Bus<T extends DriverD> extends Transport {
         driver = null;
     }
 
-    @Override
-    public T getDriver() {
-        return driver;
-    }
 
-
-    public void setDriver(T driver) {
-        this.driver = driver;
-    }
 
     @Override
     public void startMoving() {

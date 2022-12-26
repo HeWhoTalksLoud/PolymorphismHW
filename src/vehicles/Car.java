@@ -3,10 +3,10 @@ package vehicles;
 import driver.Driver;
 import driver.DriverB;
 
-public class Car<T extends DriverB> extends Transport {
+public class Car extends Transport<DriverB> {
 
     private int number;
-    private T driver;
+    //private DriverB driver;
 
     public Car(String brand, String model, float engineVolume, int number) {
         super(brand, model, engineVolume);
@@ -44,10 +44,10 @@ public class Car<T extends DriverB> extends Transport {
         else this.number = number;
     }
 
-    @Override
-    public T getDriver() {
-        return this.driver;
-    }
+//    @Override
+//    public DriverB getDriver() {
+//        return this.driver;
+//    }
 
 
     @Override
@@ -62,9 +62,9 @@ public class Car<T extends DriverB> extends Transport {
         }
     }
 
-    public void setDriver(T driver) {
-        this.driver = driver;
-    }
+//    public void setDriver(DriverB driver) {
+//        this.driver = driver;
+//    }
 
 
     @Override

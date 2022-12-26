@@ -9,7 +9,7 @@ abstract public class Transport<T> implements Competing {
     private final String model;
     private final float engineVolume;
 
-    private T driver;
+    protected T driver;
 
     public Transport(String brand, String model, float engineVolume) {
         if (brand == null || brand.equals("")) this.brand = "default";
@@ -38,6 +38,10 @@ abstract public class Transport<T> implements Competing {
 
     public T getDriver() {
         return driver;
+    }
+
+    public void setDriver(T driver) {
+        this.driver = driver;
     }
 
     public abstract void showRaceInfo();
