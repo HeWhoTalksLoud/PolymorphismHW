@@ -50,5 +50,7 @@ abstract public class Transport<T> implements Competing {
     public abstract void startMoving();
     public abstract void stopMoving();
 
+    public abstract void printType();
+
 } //
 

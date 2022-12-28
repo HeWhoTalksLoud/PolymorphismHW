@@ -6,7 +6,8 @@ import driver.DriverC;
 public class Truck extends Transport<DriverC>  {
 
     private int number;
-    //private DriverC driver;
+    private CarryingCapacity carryingCapacity;
+
     public Truck(String brand, String model, float engineVolume, int number) {
         super(brand, model, engineVolume);
 
@@ -14,6 +15,7 @@ public class Truck extends Transport<DriverC>  {
         else this.number = number;
 
         this.driver = null;
+        this.carryingCapacity = null;
     }
 
 
@@ -68,5 +70,19 @@ public class Truck extends Transport<DriverC>  {
     @Override
     public void maxSpeed() {
         System.out.println("Грузовик - макс. скорость");
+    }
+
+    @Override
+    public void printType() {
+        System.out.println(carryingCapacity == null ? "Данных по транспортному средству недостаточно" :
+                carryingCapacity);
+    }
+
+    public CarryingCapacity getCarryingCapacity() {
+        return carryingCapacity;
+    }
+
+    public void setCarryingCapacity(CarryingCapacity carryingCapacity) {
+        this.carryingCapacity = carryingCapacity;
     }
 } ////

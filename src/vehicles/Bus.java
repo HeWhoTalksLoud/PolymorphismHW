@@ -6,14 +6,15 @@ import driver.DriverD;
 public class Bus extends Transport<DriverD> {
 
     private String number;
-    //private DriverD driver;
+    private PassengerCapacity passengerCapacity;
     public Bus(String brand, String model, float engineVolume, String number) {
         super(brand, model, engineVolume);
 
         if (number == null || number.equals("")) this.number = "default";
         else this.number = number;
 
-        driver = null;
+        this.driver = null;
+        this.passengerCapacity = null;
     }
 
 
@@ -68,5 +69,19 @@ public class Bus extends Transport<DriverD> {
     @Override
     public void maxSpeed() {
         System.out.println("Автобус - макс. скорость");
+    }
+
+    @Override
+    public void printType() {
+        System.out.println(passengerCapacity == null ? "Данных по транспортному средству недостаточно" :
+                passengerCapacity);
+    }
+
+    public PassengerCapacity getPassengerCapacity() {
+        return passengerCapacity;
+    }
+
+    public void setPassengerCapacity(PassengerCapacity passengerCapacity) {
+        this.passengerCapacity = passengerCapacity;
     }
 } ////

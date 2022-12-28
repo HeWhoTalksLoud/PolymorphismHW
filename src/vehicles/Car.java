@@ -6,7 +6,7 @@ import driver.DriverB;
 public class Car extends Transport<DriverB> {
 
     private int number;
-    //private DriverB driver;
+    private BodyType bodyType;
 
     public Car(String brand, String model, float engineVolume, int number) {
         super(brand, model, engineVolume);
@@ -15,6 +15,7 @@ public class Car extends Transport<DriverB> {
         else this.number = number;
 
         this.driver = null;
+        this.bodyType = null;
     }
 
 
@@ -80,5 +81,19 @@ public class Car extends Transport<DriverB> {
     @Override
     public void maxSpeed() {
         System.out.println("Машина - макс. скорость");
+    }
+
+    @Override
+    public void printType() {
+        System.out.println(bodyType == null ? "Данных по транспортному средству недостаточно" :
+                bodyType);
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
+    }
+
+    public void setBodyType(BodyType bodyType) {
+        this.bodyType = bodyType;
     }
 } ////
