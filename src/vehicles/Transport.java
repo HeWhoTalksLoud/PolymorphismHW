@@ -1,33 +1,27 @@
 package vehicles;
 
 
-public class Transport {
+import driver.Driver;
+import driver.DriverD;
+
+abstract public class Transport<T> implements Competing {
     private final String brand;
     private final String model;
-    private final int productionYear;
-    private final String productionCountry;
-    private String color;
-    private int maxSpeed;
+    private final float engineVolume;
 
-    public Transport(String brand, String model, int productionYear, String productionCountry,
-                     String color, int maxSpeed) {
+    protected T driver;
+
+    public Transport(String brand, String model, float engineVolume) {
         if (brand == null || brand.equals("")) this.brand = "default";
         else this.brand = brand;
 
         if (model == null || model.equals("")) this.model = "default";
         else this.model = model;
 
-        if (productionYear <= 0) this.productionYear = 2000;
-        else this.productionYear = productionYear;
+        if (engineVolume <= 0) this.engineVolume = 1.5f;
+        else this.engineVolume = engineVolume;
 
-        if (productionCountry == null || productionCountry.equals("")) this.productionCountry = "default";
-        else this.productionCountry = productionCountry;
-
-        if (color == null || color.equals("")) this.color = "default";
-        else this.color = color;
-
-        if (maxSpeed <= 0) this.maxSpeed = 90;
-        else this.maxSpeed = maxSpeed;
+        this.driver = null;
     }
 
     public String getBrand() {
@@ -38,30 +32,25 @@ public class Transport {
         return model;
     }
 
-    public int getProductionYear() {
-        return productionYear;
+    public float getEngineVolume() {
+        return engineVolume;
     }
 
-    public String getProductionCountry() {
-        return productionCountry;
+    public T getDriver() {
+        return driver;
     }
 
-    public String getColor() {
-        return color;
+    public void setDriver(T driver) {
+        this.driver = driver;
     }
 
-    public void setColor(String color) {
-        if (color == null || color.equals("")) this.color = "default";
-        else this.color = color;
-    }
+    public abstract void showRaceInfo();
 
-    public int getMaxSpeed() {
-        return maxSpeed;
-    }
 
-    public void setMaxSpeed(int maxSpeed) {
-        if (maxSpeed <= 0) this.maxSpeed = 90;
-        else this.maxSpeed = maxSpeed;
-    }
+    public abstract void startMoving();
+    public abstract void stopMoving();
+
+    public abstract void printType();
 
 } //
+
