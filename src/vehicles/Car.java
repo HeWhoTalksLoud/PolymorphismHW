@@ -1,6 +1,5 @@
 package vehicles;
 
-import driver.Driver;
 import driver.DriverB;
 
 public class Car extends Transport<DriverB> {
@@ -96,4 +95,4 @@ public class Car extends Transport<DriverB> {
     public void setBodyType(BodyType bodyType) {
         this.bodyType = bodyType;
     }
-} ////
+} //
