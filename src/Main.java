@@ -62,5 +62,13 @@ public class Main {
         bus1.printType();
         bus2.printType();
 
+        try {
+            car3.inspection();
+            truck3.inspection();
+            bus1.inspection();
+        } catch (WrongVehicleTypeException e) {
+            System.out.println("Ошибка при попытке прохождения: " + e.getMessage());
+        }
+
     }
 } ////

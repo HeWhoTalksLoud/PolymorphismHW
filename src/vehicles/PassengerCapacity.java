@@ -20,4 +20,4 @@ public enum PassengerCapacity {
         l = low == 0 ? "до " : (low + "-");
         return "Вместимость: " + l +  high + " мест";
     }
-} //
+} ////

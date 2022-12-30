@@ -21,6 +21,8 @@ abstract public class Transport<T> implements Competing {
         this.driver = null;
     }
 
+    public abstract void inspection() throws WrongVehicleTypeException;
+
     public String getBrand() {
         return brand;
     }

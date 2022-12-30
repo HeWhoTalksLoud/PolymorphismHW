@@ -17,7 +17,10 @@ public class Car extends Transport<DriverB> {
         this.bodyType = null;
     }
 
-
+    @Override
+    public void inspection() {
+        System.out.println("Автомобиль прошел диагностику");
+    }
 
     @Override
     public void startMoving() {

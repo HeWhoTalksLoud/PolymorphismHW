@@ -17,7 +17,10 @@ public class Truck extends Transport<DriverC>  {
         this.carryingCapacity = null;
     }
 
-
+    @Override
+    public void inspection() {
+        System.out.println("Грузовик прошел диагностику");
+    }
 
     @Override
     public void startMoving() {

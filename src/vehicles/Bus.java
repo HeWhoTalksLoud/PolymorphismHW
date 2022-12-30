@@ -16,7 +16,10 @@ public class Bus extends Transport<DriverD> {
         this.passengerCapacity = null;
     }
 
-
+    @Override
+    public void inspection() throws WrongVehicleTypeException {
+        throw new WrongVehicleTypeException("Автобусы не могут проходить диагностику");
+    }
 
     @Override
     public void startMoving() {
