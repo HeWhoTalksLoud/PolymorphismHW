@@ -1,6 +1,5 @@
 package vehicles;
 
-import driver.Driver;
 import driver.DriverB;
 
 public class Car extends Transport<DriverB> {
@@ -18,7 +17,10 @@ public class Car extends Transport<DriverB> {
         this.bodyType = null;
     }
 
-
+    @Override
+    public void inspection() {
+        System.out.println("Автомобиль прошел диагностику");
+    }
 
     @Override
     public void startMoving() {
@@ -96,4 +98,4 @@ public class Car extends Transport<DriverB> {
     public void setBodyType(BodyType bodyType) {
         this.bodyType = bodyType;
     }
-} ////
+} //

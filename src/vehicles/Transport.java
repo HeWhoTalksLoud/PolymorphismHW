@@ -1,9 +1,6 @@
 package vehicles;
 
 
-import driver.Driver;
-import driver.DriverD;
-
 abstract public class Transport<T> implements Competing {
     private final String brand;
     private final String model;
@@ -23,6 +20,8 @@ abstract public class Transport<T> implements Competing {
 
         this.driver = null;
     }
+
+    public abstract void inspection() throws WrongVehicleTypeException;
 
     public String getBrand() {
         return brand;
@@ -53,4 +52,3 @@ abstract public class Transport<T> implements Competing {
     public abstract void printType();
 
 } //
-

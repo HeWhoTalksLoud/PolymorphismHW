@@ -1,6 +1,5 @@
 package vehicles;
 
-import driver.DriverB;
 import driver.DriverC;
 
 public class Truck extends Transport<DriverC>  {
@@ -18,7 +17,10 @@ public class Truck extends Transport<DriverC>  {
         this.carryingCapacity = null;
     }
 
-
+    @Override
+    public void inspection() {
+        System.out.println("Грузовик прошел диагностику");
+    }
 
     @Override
     public void startMoving() {
@@ -85,4 +87,4 @@ public class Truck extends Transport<DriverC>  {
     public void setCarryingCapacity(CarryingCapacity carryingCapacity) {
         this.carryingCapacity = carryingCapacity;
     }
-} ////
+} //

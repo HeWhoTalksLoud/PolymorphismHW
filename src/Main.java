@@ -53,7 +53,22 @@ public class Main {
         bus1.showRaceInfo();
         bus2.showRaceInfo();
 
+        car3.setBodyType(BodyType.SEDAN);
+        truck3.setCarryingCapacity(CarryingCapacity.N1);
+        bus1.setPassengerCapacity(PassengerCapacity.MEDIUM);
 
+        car3.printType();
+        truck3.printType();
+        bus1.printType();
+        bus2.printType();
+
+        try {
+            car3.inspection();
+            truck3.inspection();
+            bus1.inspection();
+        } catch (WrongVehicleTypeException e) {
+            System.out.println("Ошибка при попытке прохождения: " + e.getMessage());
+        }
 
     }
 } ////

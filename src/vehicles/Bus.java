@@ -1,6 +1,5 @@
 package vehicles;
 
-import driver.DriverB;
 import driver.DriverD;
 
 public class Bus extends Transport<DriverD> {
@@ -17,7 +16,10 @@ public class Bus extends Transport<DriverD> {
         this.passengerCapacity = null;
     }
 
-
+    @Override
+    public void inspection() throws WrongVehicleTypeException {
+        throw new WrongVehicleTypeException("Автобусы не могут проходить диагностику");
+    }
 
     @Override
     public void startMoving() {
@@ -84,4 +86,4 @@ public class Bus extends Transport<DriverD> {
     public void setPassengerCapacity(PassengerCapacity passengerCapacity) {
         this.passengerCapacity = passengerCapacity;
     }
-} ////
+} //

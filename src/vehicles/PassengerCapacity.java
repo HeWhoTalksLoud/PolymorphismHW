@@ -16,9 +16,8 @@ public enum PassengerCapacity {
 
     @Override
     public String toString() {
-        String l, h;
+        String l;
         l = low == 0 ? "до " : (low + "-");
-        //h = high == 0 ? "" : ("до " + highLimit + " тонн");
         return "Вместимость: " + l +  high + " мест";
     }
-}
+} ////
