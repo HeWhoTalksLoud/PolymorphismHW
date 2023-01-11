@@ -1,6 +1,8 @@
 package vehicles;
 
 import driver.DriverB;
+import mechanic.Mechanic;
+import mechanic.VehicleType;
 
 public class Car extends Transport<DriverB> {
 
@@ -65,10 +67,14 @@ public class Car extends Transport<DriverB> {
         }
     }
 
-//    public void setDriver(DriverB driver) {
-//        this.driver = driver;
-//    }
-
+    @Override
+    public void assignMechanic(Mechanic mechanic) throws WrongVehicleTypeException {
+        if (mechanic.getAvailableVehicleTypes().contains(VehicleType.CAR)) {
+            mechanics.add(mechanic);
+        } else {
+            throw new WrongVehicleTypeException("Механик не имеет доступа к работе с легковыми авто");
+        }
+    }
 
     @Override
     public void pitStop() {

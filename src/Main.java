@@ -1,7 +1,14 @@
+import driver.Driver;
 import driver.DriverB;
 import driver.DriverC;
 import driver.DriverD;
+import mechanic.Mechanic;
+import mechanic.VehicleType;
 import vehicles.*;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class Main {
@@ -21,6 +28,26 @@ public class Main {
         Truck truck3 = new Truck("Renault", "R", 5.9f, 2);
         Truck truck4 = new Truck("Freightliner", "Big", 8.0f, 30);
 
+        List<Transport> transportList = new LinkedList<>();
+
+        transportList.add(car1);
+        transportList.add(car2);
+        transportList.add(car3);
+        transportList.add(car4);
+
+        transportList.add(bus1);
+        transportList.add(bus2);
+        transportList.add(bus3);
+        transportList.add(bus4);
+
+        transportList.add(truck1);
+        transportList.add(truck2);
+        transportList.add(truck3);
+        transportList.add(truck4);
+
+        transportList.forEach(s -> System.out.println(s));
+
+        /*
         System.out.println(car1); System.out.println(car2);
         System.out.println(car3); System.out.println(car4);
 
@@ -38,14 +65,51 @@ public class Main {
         bus1.pitStop();
         car3.bestLap();
         truck2.maxSpeed();
-
+*/
         DriverB driver1 = new DriverB("Иванов П. П.", 10);
         DriverC driver2 = new DriverC("Петров И. И.", 15);
         DriverD driver3 = new DriverD("Сидоров А. Б.", 20);
 
+        List<Driver> driversList = new LinkedList<>();
+
+        driversList.add(driver1);
+        driversList.add(driver2);
+        driversList.add(driver3);
+
+        driversList.forEach(s -> System.out.println(s.getName()));
+
+        Mechanic mechanic1 = new Mechanic("Иван", "Иванов", "АБВ");
+        Mechanic mechanic2 = new Mechanic("Дмитрий", "Петров", "АБВ");
+        Mechanic mechanic3 = new Mechanic("Петр", "Дмитриев", "АБВ");
+
+        List<Mechanic> mechanicsList = new LinkedList<>();
+
+        mechanicsList.add(mechanic1);
+        mechanicsList.add(mechanic2);
+        mechanicsList.add(mechanic3);
+
+        mechanic1.addVehicleType(VehicleType.CAR);
+        mechanic1.addVehicleType(VehicleType.TRUCK);
+        mechanic1.addVehicleType(VehicleType.BUS);
+
+        mechanic2.addVehicleType(VehicleType.TRUCK);
+
+        mechanicsList.forEach(s -> System.out.println(s));
+
         car3.setDriver(driver1);
+        try {
+            car3.assignMechanic(mechanic1);
+            truck3.assignMechanic(mechanic1);
+            truck2.assignMechanic(mechanic2);
+        } catch (WrongVehicleTypeException e) {
+            System.out.println("Ошибка при попытке назначения механика: " + e.getMessage());
+        }
+
+        car3.showMechanics();
+        truck2.showMechanics();
+
         // car3.setDriver(driver2); // - ошибка уже в IDE - нам нужен агрумент типа DriverB
-        truck3.setDriver(driver2);
+/*        truck3.setDriver(driver2);
         bus1.setDriver(driver3);
 
         car3.showRaceInfo();
@@ -53,7 +117,7 @@ public class Main {
         bus1.showRaceInfo();
         bus2.showRaceInfo();
 
-        car3.setBodyType(BodyType.SEDAN);
+/*        car3.setBodyType(BodyType.SEDAN);
         truck3.setCarryingCapacity(CarryingCapacity.N1);
         bus1.setPassengerCapacity(PassengerCapacity.MEDIUM);
 
@@ -69,6 +133,6 @@ public class Main {
         } catch (WrongVehicleTypeException e) {
             System.out.println("Ошибка при попытке прохождения: " + e.getMessage());
         }
-
+*/
     }
 } ////

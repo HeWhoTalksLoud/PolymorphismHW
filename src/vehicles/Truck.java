@@ -1,6 +1,8 @@
 package vehicles;
 
 import driver.DriverC;
+import mechanic.Mechanic;
+import mechanic.VehicleType;
 
 public class Truck extends Transport<DriverC>  {
 
@@ -15,6 +17,15 @@ public class Truck extends Transport<DriverC>  {
 
         this.driver = null;
         this.carryingCapacity = null;
+    }
+
+    @Override
+    public void assignMechanic(Mechanic mechanic) throws WrongVehicleTypeException {
+        if (mechanic.getAvailableVehicleTypes().contains(VehicleType.TRUCK)) {
+            mechanics.add(mechanic);
+        } else {
+            throw new WrongVehicleTypeException("Механик не имеет доступа к работе с грузовиками");
+        }
     }
 
     @Override
