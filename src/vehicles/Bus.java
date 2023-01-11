@@ -1,7 +1,8 @@
 package vehicles;
 
-import driver.DriverB;
 import driver.DriverD;
+import mechanic.Mechanic;
+import mechanic.VehicleType;
 
 public class Bus extends Transport<DriverD> {
 
@@ -17,7 +18,19 @@ public class Bus extends Transport<DriverD> {
         this.passengerCapacity = null;
     }
 
+    @Override
+    public void assignMechanic(Mechanic mechanic) throws WrongVehicleTypeException {
+        if (mechanic.getAvailableVehicleTypes().contains(VehicleType.BUS)) {
+            mechanics.add(mechanic);
+        } else {
+            throw new WrongVehicleTypeException("Механик не имеет доступа к работе с автобусами");
+        }
+    }
 
+    @Override
+    public void inspection() throws WrongVehicleTypeException {
+        throw new WrongVehicleTypeException("Автобусы не могут проходить диагностику");
+    }
 
     @Override
     public void startMoving() {
@@ -84,4 +97,4 @@ public class Bus extends Transport<DriverD> {
     public void setPassengerCapacity(PassengerCapacity passengerCapacity) {
         this.passengerCapacity = passengerCapacity;
     }
-} ////
+} //
