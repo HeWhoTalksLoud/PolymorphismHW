@@ -4,6 +4,7 @@ package vehicles;
 import mechanic.Mechanic;
 
 import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 abstract public class Transport<T> implements Competing {
@@ -26,6 +27,20 @@ abstract public class Transport<T> implements Competing {
         else this.engineVolume = engineVolume;
 
         this.driver = null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return Float.compare(transport.engineVolume, engineVolume) == 0 &&
+                brand.equals(transport.brand) && model.equals(transport.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engineVolume);
     }
 
     public abstract void assignMechanic(Mechanic mechanic) throws WrongVehicleTypeException;
@@ -73,4 +88,4 @@ abstract public class Transport<T> implements Competing {
 
     public abstract void printType();
 
-} //
+} ////

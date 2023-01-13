@@ -6,9 +6,7 @@ import mechanic.Mechanic;
 import mechanic.VehicleType;
 import vehicles.*;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 
 public class Main {
@@ -47,25 +45,6 @@ public class Main {
 
         transportList.forEach(s -> System.out.println(s));
 
-        /*
-        System.out.println(car1); System.out.println(car2);
-        System.out.println(car3); System.out.println(car4);
-
-        System.out.println();
-        System.out.println(bus1); System.out.println(bus2);
-        System.out.println(bus3); System.out.println(bus4);
-
-        System.out.println();
-        System.out.println(truck1); System.out.println(truck2);
-        System.out.println(truck3); System.out.println(truck4);
-
-        truck3.startMoving();
-        truck3.stopMoving();
-
-        bus1.pitStop();
-        car3.bestLap();
-        truck2.maxSpeed();
-*/
         DriverB driver1 = new DriverB("Иванов П. П.", 10);
         DriverC driver2 = new DriverC("Петров И. И.", 15);
         DriverD driver3 = new DriverD("Сидоров А. Б.", 20);
@@ -82,57 +61,16 @@ public class Main {
         Mechanic mechanic2 = new Mechanic("Дмитрий", "Петров", "АБВ");
         Mechanic mechanic3 = new Mechanic("Петр", "Дмитриев", "АБВ");
 
-        List<Mechanic> mechanicsList = new LinkedList<>();
+        Map<Transport, Mechanic> mechanics = new HashMap<>();
 
-        mechanicsList.add(mechanic1);
-        mechanicsList.add(mechanic2);
-        mechanicsList.add(mechanic3);
+        mechanics.put(truck1, mechanic2);
+        mechanics.put(truck1, mechanic1);
+        mechanics.put(car2, mechanic1);
+        mechanics.put(bus1, mechanic3);
 
-        mechanic1.addVehicleType(VehicleType.CAR);
-        mechanic1.addVehicleType(VehicleType.TRUCK);
-        mechanic1.addVehicleType(VehicleType.BUS);
-
-        mechanic2.addVehicleType(VehicleType.TRUCK);
-
-        mechanicsList.forEach(s -> System.out.println(s));
-
-        car3.setDriver(driver1);
-        try {
-            car3.assignMechanic(mechanic1);
-            truck3.assignMechanic(mechanic1);
-            truck2.assignMechanic(mechanic2);
-        } catch (WrongVehicleTypeException e) {
-            System.out.println("Ошибка при попытке назначения механика: " + e.getMessage());
+        for (Map.Entry<Transport, Mechanic> entry : mechanics.entrySet()) {
+            System.out.println(entry.getKey() + ", механик: " + entry.getValue());
         }
 
-        car3.showMechanics();
-        truck2.showMechanics();
-
-        // car3.setDriver(driver2); // - ошибка уже в IDE - нам нужен агрумент типа DriverB
-/*        truck3.setDriver(driver2);
-        bus1.setDriver(driver3);
-
-        car3.showRaceInfo();
-        truck3.showRaceInfo();
-        bus1.showRaceInfo();
-        bus2.showRaceInfo();
-
-/*        car3.setBodyType(BodyType.SEDAN);
-        truck3.setCarryingCapacity(CarryingCapacity.N1);
-        bus1.setPassengerCapacity(PassengerCapacity.MEDIUM);
-
-        car3.printType();
-        truck3.printType();
-        bus1.printType();
-        bus2.printType();
-
-        try {
-            car3.inspection();
-            truck3.inspection();
-            bus1.inspection();
-        } catch (WrongVehicleTypeException e) {
-            System.out.println("Ошибка при попытке прохождения: " + e.getMessage());
-        }
-*/
     }
 } ////
