@@ -1,13 +1,18 @@
 package vehicles;
 
 
-import driver.Driver;
-import driver.DriverD;
+import mechanic.Mechanic;
+
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
 
 abstract public class Transport<T> implements Competing {
     private final String brand;
     private final String model;
     private final float engineVolume;
+
+    protected Set<Mechanic> mechanics = new HashSet<>();
 
     protected T driver;
 
@@ -23,6 +28,37 @@ abstract public class Transport<T> implements Competing {
 
         this.driver = null;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Transport<?> transport = (Transport<?>) o;
+        return Float.compare(transport.engineVolume, engineVolume) == 0 &&
+                brand.equals(transport.brand) && model.equals(transport.model);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(brand, model, engineVolume);
+    }
+
+    public abstract void assignMechanic(Mechanic mechanic) throws WrongVehicleTypeException;
+    public void removeMechanic(Mechanic mechanic) {
+        mechanics.remove(mechanic);
+    }
+    public void showMechanics() {
+        System.out.println("Машина " + getBrand() + " " + getModel() +
+                ", механик(-и):");
+        if (mechanics.isEmpty()) {
+            System.out.println("не назначены");
+        }
+        else for (Mechanic mechanic : mechanics) {
+            System.out.println(mechanic);
+        }
+    }
+
+    public abstract void inspection() throws WrongVehicleTypeException;
 
     public String getBrand() {
         return brand;
@@ -52,5 +88,4 @@ abstract public class Transport<T> implements Competing {
 
     public abstract void printType();
 
-} //
-
+} ////

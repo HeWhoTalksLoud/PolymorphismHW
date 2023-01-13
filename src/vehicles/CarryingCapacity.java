@@ -21,4 +21,4 @@ public enum CarryingCapacity {
         return "Грузоподъемность: " + low + (low.equals("") ? "" : " ") +
                 high;
     }
-}
+} ////
