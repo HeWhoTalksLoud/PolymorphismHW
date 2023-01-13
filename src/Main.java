@@ -43,19 +43,26 @@ public class Main {
         transportList.add(truck3);
         transportList.add(truck4);
 
-        transportList.forEach(s -> System.out.println(s));
+        //transportList.forEach(s -> System.out.println(s));
 
         DriverB driver1 = new DriverB("Иванов П. П.", 10);
         DriverC driver2 = new DriverC("Петров И. И.", 15);
         DriverD driver3 = new DriverD("Сидоров А. Б.", 20);
 
-        List<Driver> driversList = new LinkedList<>();
+        Set<Driver> drivers = new HashSet<>();
 
-        driversList.add(driver1);
-        driversList.add(driver2);
-        driversList.add(driver3);
+        drivers.add(driver1);
+        drivers.add(driver1);
+        drivers.add(driver2);
+        drivers.add(driver2);
+        drivers.add(driver3);
 
-        driversList.forEach(s -> System.out.println(s.getName()));
+        //drivers.forEach(s -> System.out.println(s.getName()));
+        Iterator<Driver> iter = drivers.iterator();
+
+        while (iter.hasNext()) {
+            System.out.println(iter.next().getName());
+        }
 
         Mechanic mechanic1 = new Mechanic("Иван", "Иванов", "АБВ");
         Mechanic mechanic2 = new Mechanic("Дмитрий", "Петров", "АБВ");
