@@ -1,7 +1,12 @@
+import driver.Driver;
 import driver.DriverB;
 import driver.DriverC;
 import driver.DriverD;
+import mechanic.Mechanic;
+import mechanic.VehicleType;
 import vehicles.*;
+
+import java.util.*;
 
 
 public class Main {
@@ -21,39 +26,58 @@ public class Main {
         Truck truck3 = new Truck("Renault", "R", 5.9f, 2);
         Truck truck4 = new Truck("Freightliner", "Big", 8.0f, 30);
 
-        System.out.println(car1); System.out.println(car2);
-        System.out.println(car3); System.out.println(car4);
+        List<Transport> transportList = new LinkedList<>();
 
-        System.out.println();
-        System.out.println(bus1); System.out.println(bus2);
-        System.out.println(bus3); System.out.println(bus4);
+        transportList.add(car1);
+        transportList.add(car2);
+        transportList.add(car3);
+        transportList.add(car4);
 
-        System.out.println();
-        System.out.println(truck1); System.out.println(truck2);
-        System.out.println(truck3); System.out.println(truck4);
+        transportList.add(bus1);
+        transportList.add(bus2);
+        transportList.add(bus3);
+        transportList.add(bus4);
 
-        truck3.startMoving();
-        truck3.stopMoving();
+        transportList.add(truck1);
+        transportList.add(truck2);
+        transportList.add(truck3);
+        transportList.add(truck4);
 
-        bus1.pitStop();
-        car3.bestLap();
-        truck2.maxSpeed();
+        //transportList.forEach(s -> System.out.println(s));
 
         DriverB driver1 = new DriverB("Иванов П. П.", 10);
         DriverC driver2 = new DriverC("Петров И. И.", 15);
         DriverD driver3 = new DriverD("Сидоров А. Б.", 20);
 
-        car3.setDriver(driver1);
-        // car3.setDriver(driver2); // - ошибка уже в IDE - нам нужен агрумент типа DriverB
-        truck3.setDriver(driver2);
-        bus1.setDriver(driver3);
+        Set<Driver> drivers = new HashSet<>();
 
-        car3.showRaceInfo();
-        truck3.showRaceInfo();
-        bus1.showRaceInfo();
-        bus2.showRaceInfo();
+        drivers.add(driver1);
+        drivers.add(driver1);
+        drivers.add(driver2);
+        drivers.add(driver2);
+        drivers.add(driver3);
 
+        //drivers.forEach(s -> System.out.println(s.getName()));
+        Iterator<Driver> iter = drivers.iterator();
 
+        while (iter.hasNext()) {
+            System.out.println(iter.next().getName());
+        }
+
+        Mechanic mechanic1 = new Mechanic("Иван", "Иванов", "АБВ");
+        Mechanic mechanic2 = new Mechanic("Дмитрий", "Петров", "АБВ");
+        Mechanic mechanic3 = new Mechanic("Петр", "Дмитриев", "АБВ");
+
+        Map<Transport, Mechanic> mechanics = new HashMap<>();
+
+        mechanics.put(truck1, mechanic2);
+        mechanics.put(truck1, mechanic1);
+        mechanics.put(car2, mechanic1);
+        mechanics.put(bus1, mechanic3);
+
+        for (Map.Entry<Transport, Mechanic> entry : mechanics.entrySet()) {
+            System.out.println(entry.getKey() + ", механик: " + entry.getValue());
+        }
 
     }
 } ////
